@@ -5,6 +5,10 @@
   "main": "BoltEarthSDK.js",
   "author": "BoltEarth",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/debashishBoltEarth/bolt-earth-react-native-sdk"
+  },
   "peerDependencies": {
     "react-native": ">=0.71.0"
   }
