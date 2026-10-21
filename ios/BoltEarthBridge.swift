@@ -427,14 +427,16 @@ final class BoltEarthBridge: RCTEventEmitter {
     }
 
     private static func walkLeafPresented(from vc: UIViewController) -> UIViewController {
+        // Walk only explicitly-presented VCs, never into nav/tab controller children.
+        //
+        // In RN New Architecture (Fabric), walking into nav.visibleViewController can return a VC
+        // that lives in a temporary Fabric surface window. When Fabric tears down that window,
+        // UIKit deallocates it and calls viewWillDisappear on the SDK's VCs via the window-dealloc
+        // path instead of the normal dismiss path — triggering Swift runtime traps inside the SDK.
+        // Presenting from the nav/tab container itself (which belongs to the main stable window)
+        // avoids this entirely.
         if let presented = vc.presentedViewController {
             return walkLeafPresented(from: presented)
-        }
-        if let nav = vc as? UINavigationController, let visible = nav.visibleViewController {
-            return walkLeafPresented(from: visible)
-        }
-        if let tab = vc as? UITabBarController, let sel = tab.selectedViewController {
-            return walkLeafPresented(from: sel)
         }
         return vc
     }
