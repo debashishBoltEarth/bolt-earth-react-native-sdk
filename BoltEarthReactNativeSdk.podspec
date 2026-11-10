@@ -1,9 +1,7 @@
 Pod::Spec.new do |s|
-
   s.name         = "BoltEarthReactNativeSdk"
-  s.version      = "1.1.4"
+  s.version      = "1.1.5"
   s.summary      = "BoltEarth React Native SDK"
-
   s.description  = <<-DESC
     React Native wrapper for BoltEarth iOS SDK
   DESC
@@ -18,9 +16,10 @@ Pod::Spec.new do |s|
     "BoltEarth" => "support@bolt.earth"
   }
 
-  s.platform     = :ios, "15.1"
+  s.platform      = :ios, "15.1"
+  s.swift_version = "5.0"
 
-  s.source       = {
+  s.source = {
     :git => "https://github.com/debashishBoltEarth/bolt-earth-react-native-sdk",
     :tag => s.version.to_s
   }
@@ -28,12 +27,7 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{swift,m,h}"
 
   s.dependency "React-Core"
+  s.dependency "BoltEarthUiSdkCore", "1.1.5"
 
-  s.dependency "BoltEarthUiSdkCore", "1.1.4"
-
-  s.swift_version = "5.0"
-
-  # Important for RN + dynamic frameworks
   s.static_framework = false
-
 end
