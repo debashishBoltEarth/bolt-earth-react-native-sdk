@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "BoltEarthReactNativeSdk"
-  s.version      = "1.1.5"
+  s.version      = "1.1.6"
   s.summary      = "BoltEarth React Native SDK"
   s.description  = <<-DESC
     React Native wrapper for BoltEarth iOS SDK
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{swift,m,h}"
 
   s.dependency "React-Core"
-  s.dependency "BoltEarthUiSdkCore", "1.1.5"
+  s.dependency "BoltEarthUiSdkCore", "1.1.6"
 
   s.static_framework = false
 end
